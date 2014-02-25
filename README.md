@@ -3,8 +3,6 @@ Kibana
 
 [Kibana](https://github.com/elasticsearch/kibana) role for ansible.
 
-A brief description of the role goes here.
-
 Features
 ------------
 
