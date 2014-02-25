@@ -1,0 +1,21 @@
+---
+# just trigger actual build process
+- name: rebuild kibana {{ kibana_root_path }}
+  command: /bin/true
+  notify:
+    - install npm modules {{ kibana_root_path }}
+    - install grunt-cli {{ kibana_root_path }}
+    - update npm modules {{ kibana_root_path }}
+    - grunt build {{ kibana_root_path }}
+    - chown kibana dir {{ kibana_root_path }}
+
+- name: install npm modules {{ kibana_root_path }}
+  command: chdir={{ kibana_root_path }} npm install
+- name: install grunt-cli {{ kibana_root_path }}
+  command: chdir={{ kibana_root_path }} npm install grunt-cli
+- name: update npm modules {{ kibana_root_path }}
+  command: chdir={{ kibana_root_path }} npm update
+- name: grunt build {{ kibana_root_path }}
+  command: chdir={{ kibana_root_path }} ./node_modules/.bin/grunt build
+- name: chown kibana dir {{ kibana_root_path }}
+  file: path={{ kibana_root_path }} state=directory owner={{ kibana_owner }} recurse=yes

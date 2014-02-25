@@ -1,0 +1,34 @@
+---
+- name: check if kibana git tree exists
+  command: test -f {{ kibana_root_path }}/src/config.js
+  ignore_errors: yes
+  register: kibana_config_exists
+- name: create temporary config
+  shell: mktemp
+  register: temp_config_path
+  when: kibana_config_exists|success
+- name: stash kibana config
+  shell: cp -a {{ kibana_root_path }}/src/config.js  {{ temp_config_path.stdout }}
+  when: kibana_config_exists|success
+- name: revert changes to kibana config
+  command: chdir={{ kibana_root_path }} git checkout -- src/config.js
+  when: kibana_config_exists|success
+- name: checkout kibana from git
+  git: repo={{ kibana_git_url }}
+       dest={{ kibana_root_path }}
+       version={{ kibana_git_branch }}
+       force=yes
+       update=yes
+  notify:
+    - rebuild kibana {{ kibana_root_path }}
+- name: move stashed config back
+  shell: cp -a {{ temp_config_path.stdout }} {{ kibana_root_path }}/src/config.js
+  when: kibana_config_exists|success
+- name: make config for kibana
+  template: src=kibana.js.j2 dest={{ kibana_root_path }}/dist/config.js owner={{ kibana_owner }}
+  notify:
+    - rebuild kibana {{ kibana_root_path }}
+- name: check if build required # because npm install could kill build process for no fucking reason
+  command: /bin/true creates={{ kibana_root_path }}/dist
+  notify:
+    - rebuild kibana {{ kibana_root_path }}

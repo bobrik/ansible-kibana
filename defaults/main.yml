@@ -1,0 +1,21 @@
+---
+kibana_owner: www-data
+  
+kibana_git_url: https://github.com/elasticsearch/kibana.git
+kibana_git_branch: master
+kibana_root_path: /var/www/kibana
+kibana_default_route: /dashboard/file/default.json
+kibana_index: kibana-int
+
+kibana_elasticsearch_url: http://127.0.0.1:9200
+
+kibana_nginx_config_name: kibana.conf
+kibana_nginx_config_path: /etc/nginx/sites-enabled
+kibana_nginx_listen: 127.0.0.1
+kibana_nginx_server_name: 127.0.0.1
+kibana_nginx_access_log: false
+kibana_nginx_error_log: false
+kibana_nginx_enable_ssl: false
+kibana_nginx_ssl_cert_path: ""
+kibana_nginx_ssl_key_path: ""
+kibana_nginx_http_auth_file: false

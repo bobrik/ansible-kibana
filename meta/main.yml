@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Ian Babrou
+  description: Kibana role for ansible
+  company: your company (optional)
+  license: MIT
+  min_ansible_version: 1.4
+  categories:
+  - monitoring
+  - web
+dependencies: []
