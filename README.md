@@ -32,7 +32,7 @@ Role Variables
 * `kibana_nginx_ssl_key_path` nginx ssl key path, `""` by default
 * `kibana_nginx_http_auth_file` path to nginx http auth file, `false` by default
 
-Miniman installation on ubuntu requires none of variables to be set, it will work on `http://127.0.0.1/`.
+Minimal installation on ubuntu requires none of variables to be set, it will work on `http://127.0.0.1/`.
 
 Dependencies
 ------------
