@@ -48,6 +48,7 @@ server {
     location /es/ {
         rewrite ^/es/_nodes$ /_nodes break;
         rewrite ^/es/(.*/_aliases)$ /$1 break;
+        rewrite ^/es/(.*/_mapping)$ /$1 break;
         rewrite ^/es/(.*/_mapping/field/\*)$ /$1 break;
         return 403;
 
