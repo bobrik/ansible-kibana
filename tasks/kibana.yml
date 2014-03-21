@@ -24,6 +24,8 @@
 - name: move stashed config back
   shell: cp -a {{ temp_config_path.stdout }} {{ kibana_root_path }}/src/config.js
   when: kibana_config_exists|success
+- name: create dist dir
+  file: path={{ kibana_root_path }}/dist state=directory
 - name: make config for kibana
   template: src=kibana.js.j2 dest={{ kibana_root_path }}/dist/config.js owner={{ kibana_owner }}
   notify:
