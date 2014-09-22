@@ -20,7 +20,7 @@ Role Variables
 * `kibana_root_path` path to clone kibana, `/var/www/kibana` by default
 * `kibana_default_route` default dashboard url, `/dashboard/file/default.json` by default
 * `kibana_index` kibana index to store dashboards, `kibana-int` by default
-* `kibana_elasticsearch_url` elasticsearch url *for nginx*, http://127.0.0.1:9200 by default
+* `kibana_elasticsearch_url` elasticsearch url *for nginx*, http://127.0.0.1:9200 by default, could be list
 * `kibana_nginx_config_name` nginx config name, `kibana.conf` by default
 * `kibana_nginx_config_path` nginx configs dir, `/etc/nginx/sites-enabled` by default
 * `kibana_nginx_listen` nginx listen address, `127.0.0.1` by default
