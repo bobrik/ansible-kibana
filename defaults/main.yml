@@ -1,8 +1,8 @@
 ---
 kibana_owner: www-data
   
-kibana_git_url: https://github.com/elasticsearch/kibana.git
-kibana_git_branch: master
+kibana_git_url: https://github.com/Topface/kibana.git
+kibana_git_branch: topface-patched
 kibana_root_path: /var/www/kibana
 kibana_default_route: /dashboard/file/default.json
 kibana_index: kibana-int
